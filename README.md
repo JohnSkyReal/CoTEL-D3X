@@ -8,7 +8,7 @@ TBD
 ## Data
 TBD
 
-## train
+## Train
 TBD
 
 ## Performances
