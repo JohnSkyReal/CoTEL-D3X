@@ -21,8 +21,11 @@ https://huggingface.co/docs/hub/security-tokens/
   python qlora_finetune.py --data_path=train_joint.jsonl --output_path=ddi-joint --learning_rate=2e-4 --model_path=meta-llama/Llama-2-13b-hf --epochs=15 --max_length=1024 --micro_batch_size=8 --batch_size=16
 
 #### pipeline method
-  python qlora_finetune.py --data_path=train_pipe.jsonl --output_path=ddi-pipe --learning_rate=2e-4 --model_path=meta-llama/Llama-2-13b-hf --epochs=15 --max_length=512 --micro_batch_size=8 --batch_size=16
-
+  NER: 
+  python qlora_finetune.py --data_path=train_pipe_step1.jsonl --output_path=ddi-pipe-step1 --learning_rate=2e-4 --model_path=meta-llama/Llama-2-13b-hf --epochs=15 --max_length=512 --micro_batch_size=8 --batch_size=16
+  RE: 
+  python qlora_finetune.py --data_path=train_pipe_step2.jsonl --output_path=ddi-pipe-step2 --learning_rate=2e-4 --model_path=meta-llama/Llama-2-13b-hf --epochs=15 --max_length=512 --micro_batch_size=8 --batch_size=16
+  
 ### Multi GPUs
   CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node=2 --master_port=12345 qlora_finetune.py --data_path=train_joint.jsonl --output_path=ddi-joint --model_path=meta-llama/Llama-2-13b-hf --epochs=15 --max_length=1024 --micro_batch_size=8 --batch_size=16
 
@@ -32,7 +35,10 @@ https://huggingface.co/docs/hub/security-tokens/
   python qlora_completion.py --data_path=test_joint.jsonl --output_path=prediction-ddi-pipe --lora_path=ddi-joint/checkpoint-xxx --model_path=meta-llama/Llama-2-13b-hf --max_new_tokens=1024
 
 #### pipeline method
-  python qlora_completion.py --data_path=test_pipe.jsonl --output_path=prediction-ddi-pipe --lora_path=ddi-pipe/checkpoint-xxx --model_path=meta-llama/Llama-2-13b-hf --max_new_tokens=32
+  NER: 
+  python qlora_completion.py --data_path=test_pipe_step1.jsonl --output_path=prediction-ddi-pipe-step1 --lora_path=ddi-pipe-step1/checkpoint-xxx --model_path=meta-llama/Llama-2-13b-hf --max_new_tokens=1024
+  RE: 
+  python qlora_completion.py --data_path=test_pipe_step2.jsonl --output_path=prediction-ddi-pipe-step2 --lora_path=ddi-pipe-step2/checkpoint-xxx --model_path=meta-llama/Llama-2-13b-hf --max_new_tokens=32
 
 ## References
 TBD
