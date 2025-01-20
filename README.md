@@ -4,7 +4,7 @@ Codes and datasets for CoTEL-D3X: A Chain-of-Thought Enhanced Large Language Mod
 ## Methods
 We proposed a Chain-of-Thought Enhanced Large Language Model for DDI Triplet Extraction (CoTEL-D3X). Based on the transformer architecture, we designed joint and pipeline methods that can perform end-to-end DDI triplet extraction in a generative manner. Our proposed approach builds upon the novel LLaMA series model as the foundation model and incorporates instruction tuning and Chain-of-Thought techniques to enhance the model’s understanding of task requirements and reasoning capabilities.
 
-## Data
+## Data and Weights
 You need to get official data from here:
 http://dx.doi.org/10.1016/j.jbi.2013.07.011
 
@@ -41,7 +41,7 @@ https://huggingface.co/docs/hub/security-tokens/
 #### pipeline method
 ```
   # NER:   
-  python qlora_completion.py --data_path=test_pipe_step1.jsonl --output_path=prediction-ddi-pipe-step1 --lora_path=ddi-pipe-step1/checkpoint-xxx --model_path=meta-llama/Llama-2-13b-hf --max_new_tokens=1024
+  python qlora_completion.py --data_path=test_pipe_step1.jsonl --output_path=prediction-ddi-pipe-step1 --lora_path=ddi-pipe-step1/checkpoint-xxx --model_path=meta-llama/Llama-2-13b-hf --max_new_tokens=512
   # RE:   
   python qlora_completion.py --data_path=test_pipe_step2.jsonl --output_path=prediction-ddi-pipe-step2 --lora_path=ddi-pipe-step2/checkpoint-xxx --model_path=meta-llama/Llama-2-13b-hf --max_new_tokens=32
 ```
